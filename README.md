@@ -1,52 +1,53 @@
-# React + TypeScript + Vite
+# The Daily Commute
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to **The Daily Commute**! A productivity app designed to help you stay focused with Pomodoro sessions, manage your to-do lists, and enjoy calming ambient sounds while you work.
 
-Currently, two official plugins are available:
+Whether you're working, studying, or just need a structured way to break up your day, this app has you covered. It’s a perfect blend of focus, productivity, and relaxation.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- **Pomodoro Timer**: Helps you work in focused bursts with short breaks in between. Stay on track and beat procrastination.
+- **To-Do List**: Easily create and manage tasks to organize your day. Add tasks, mark them complete, and keep things moving.
+- **Ambient Sounds**: Choose from a variety of relaxing sounds to help you focus or unwind. Create the perfect atmosphere for work or relaxation.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Demo
 
-- Configure the top-level `parserOptions` property like this:
+Check out the live version of the app here:  
+[insert link to your live website]
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Installation
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+To run **The Daily Commute** locally, follow these steps:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### 1. Clone the Repository
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
-# the-daily-commute
-A productivity app for focus sessions, to-do lists, and calming ambient sounds
+```bash
+git clone https://github.com/SAndreeaM/the-daily-commute.git
+
+### 2. Install Dependencies
+
+```bash
+cd the-daily-commute
+npm install
+
+### 3. Run the App
+
+```bash
+npm run dev
+
+## Technologies Used
+
+- *React*: For building a dynamic, component-driven UI.
+- *TypeScript*: Adds type safety to the app and improves developer experience.
+- *Vite*: For fast and optimized development and build process.
+- *CSS*: For styling the app (or feel free to replace with your preferred styling method).
+
+## License
+
+This project is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License (CC BY-NC-ND 4.0). You are welcome to view the code, but you cannot modify, distribute, or use it commercially.
+Read the full license here.
+https://creativecommons.org/licenses/by-nc-nd/4.0/
+
+## Contributing
+
+While the app is not open for extensive contributions, you can always open an issue if you have any feedback or suggestions!
