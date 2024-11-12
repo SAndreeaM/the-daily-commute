@@ -23,17 +23,20 @@ To run **The Daily Commute** locally, follow these steps:
 
 ```bash
 git clone https://github.com/SAndreeaM/the-daily-commute.git
+```
 
 ### 2. Install Dependencies
 
 ```bash
 cd the-daily-commute
 npm install
+```
 
 ### 3. Run the App
 
 ```bash
 npm run dev
+```
 
 ## Technologies Used
 
