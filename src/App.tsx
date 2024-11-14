@@ -8,7 +8,7 @@ import './App.css'
 function App() {
 
   return (
-    <div className='app flexbox'>
+    <div id='app' className='flexbox'>
       <Section1 />
       <Section2 />
       <Section3 />
