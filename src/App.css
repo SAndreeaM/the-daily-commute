@@ -1,7 +1,9 @@
 /* DEFAULT STYLES */
-#root {}
+.root {}
 
-  #app {
+  .app {
+    margin: 32px;
+
     flex-flow: row wrap;
     justify-content: space-evenly;
     align-items: stretch;
@@ -20,32 +22,45 @@
   align-items: center;
 }
   /* SECTION 1 */
-  #section1 {
-    flex-flow: column;
+  .section1 {
+    max-width: 25vw;
+
+    flex-flow: column wrap;
+    justify-content: space-between;
 
     order: 1;
     flex-grow: 1;
   }
 
-  #home-content {
+  .home-content {
     height: 80vh;
+    width: 100%;
 
-    flex-flow: column;
-    justify-content: space-evenly;
+    flex-flow: column nowrap;
+    justify-content: center;
     align-items: center;
-    background-color: red;
+
+    gap: 2.5vh;
+
+    text-align: center;
+  }
+
+  .home-content p {
+    height: 2rem;
   }
 
     /* MENU */
-    #menu {
-      width: 50%;
+    .menu {
+
+      max-height: 20vh;
+      width: 75%;
 
       flex-flow: row nowrap;
       justify-content: space-evenly;
       align-items: center;
     }
 
-      #menu > button {
+      .menu button {
         background-color: transparent;
         border: none;
         outline: none;
@@ -53,13 +68,17 @@
       }
   
   /* SECTION 2 */
-  #section2 {
+  .section2 {
+    max-width: 50vw;
+
     order: 2;
     flex-grow: 2;
   }
 
   /* SECTION 3 */
-  #section3 {
+  .section3 {
+    max-width: 25vw;
+
     order: 3;
     flex-grow: 1;
   }

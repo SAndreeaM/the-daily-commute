@@ -1,17 +1,63 @@
-import './App.css'
+import { useState, useEffect } from 'react'
+
 import Menu from './Menu.tsx'
 
-function Section1() {
+import './App.css'
 
-    return (
-      <div id='section1' className='section flexbox'>
-        <div id='home-content' className='flexbox'>
-          <h1>The Daily Commute</h1>
-          <Menu />
-          <p>This is a funny haha quip.</p>
-        </div>
-      </div>
-    )
-  }
+interface Props {
+  quip: string;
+}
+
+function Section1(props:Props) {
+   // Menu Page Handler
+   type MenuOption = "home" | "credits" | "social" | "settings"; // Custom type for Menu Options
   
-  export default Section1
+   const [menuPage, setMenuPage] = useState<MenuOption>("home"); // Initialise menuPage update
+ 
+   const handleMenuClick = (id: string) => {
+     switch(id) {
+       case "home":
+         setMenuPage("home");
+         console.log("home");
+         break;
+
+       case "credits":
+         setMenuPage("credits");
+         console.log("credits");
+         break;
+
+       case "social":
+         setMenuPage("social");
+         console.log("social");
+         break;
+
+       case "settings":
+         setMenuPage("settings");
+         console.log("settings");
+         break;
+
+       default:
+         setMenuPage("home");
+     }
+   }
+  
+  return (
+    <div className='section1 section flexbox'>
+      {menuPage !== "home" && <Menu onMenuClick={handleMenuClick} />}
+
+      {menuPage === "home" && (
+        <div className='home-content flexbox'>
+          <h1>The Daily Commute</h1>
+          <Menu
+            onMenuClick={handleMenuClick}
+            
+          />
+          <p>{props.quip}</p>
+        </div>
+      )
+    }
+    </div>
+  )
+}
+  
+export default Section1
