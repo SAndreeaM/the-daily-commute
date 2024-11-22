@@ -1,6 +1,13 @@
 /* DEFAULT STYLES */
 .root {}
 
+  h1, h2, h3 {
+    width: 100%;
+    text-align: center;
+
+    margin: 1rem 0 1rem 0;
+  }
+
   .app {
     margin: 32px;
 
@@ -16,6 +23,7 @@
 /* SECTION STYLES */
 .section {
   height: 100vh;
+  max-height: 100vh;
 
   flex-flow: column nowrap;
   justify-content: center;
@@ -30,6 +38,30 @@
 
     order: 1;
     flex-grow: 1;
+  }
+
+  .section1-content {
+    height: 95vh;
+    width: 100%;
+
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    text-align: justify;
+  }
+
+  .section1-content div {
+    overflow-y: scroll;
+
+    /* Hide scrollbar for section content */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+  .section1-content div::-webkit-scrollbar {
+    /* Hide scrollbar for section content */
+    display: none;  /* Safari and Chrome */
   }
 
   .home-content {
@@ -51,8 +83,7 @@
 
     /* MENU */
     .menu {
-
-      max-height: 20vh;
+      height: 5vh;
       width: 75%;
 
       flex-flow: row nowrap;
