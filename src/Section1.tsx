@@ -9,7 +9,7 @@ interface Props {
 function Section1(props: Props) {
   type MenuOption = "home" | "credits" | "social" | "settings"; // Define Menu Options type
   const [menuPage, setMenuPage] = useState<MenuOption>("home"); // Initialise default menuPage
-  const [menuState, setMenuState] = useState<boolean>(false); // Default to the menu being closed
+  const [menuState, setMenuState] = useState<boolean>(true); // Default to the menu being closed
   const [lightMode, setLightMode] = useState<boolean>(false); // Handle light/dark mode state
 
   const handleMenuClick = (id: string, toggleMenu?: boolean, lightMode?: boolean) => {
