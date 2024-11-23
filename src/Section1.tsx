@@ -1,95 +1,91 @@
-import { useState, useEffect } from 'react'
-
-import Menu from './Menu.tsx'
-
-import './App.css'
+import { useState } from 'react';
+import Menu from './Menu.tsx';
+import './App.css';
 
 interface Props {
   quip: string;
 }
 
-function Section1(props:Props) {
-   // Menu Page Handler
-   type MenuOption = "home" | "credits" | "social" | "settings"; // Custom type for Menu Options
-  
-   const [menuPage, setMenuPage] = useState<MenuOption>("home"); // Initialise menuPage update
- 
-   const handleMenuClick = (id: string) => {
-     switch(id) {
-       case "home":
-         setMenuPage("home");
-         break;
+function Section1(props: Props) {
+  type MenuOption = "home" | "credits" | "social" | "settings"; // Define Menu Options type
+  const [menuPage, setMenuPage] = useState<MenuOption>("home"); // Initialise default menuPage
+  const [menuState, setMenuState] = useState<boolean>(false); // Default to the menu being closed
+  const [lightMode, setLightMode] = useState<boolean>(false); // Handle light/dark mode state
 
-       case "credits":
-         setMenuPage("credits");
-         break;
-
-       case "social":
-         setMenuPage("social");
-         break;
-
-       case "settings":
-         setMenuPage("settings");
-         break;
-
-       default:
-         setMenuPage("home");
-     }
-   }
-  
-  return (
-    // Top Menu
-    <div className='section1 section flexbox'>
-      { // Check if menuPage is "home" ? don't show top menu : show top menu
-        menuPage !== "home" && <Menu onMenuClick={handleMenuClick} />
-      } 
-
-      {
-        // Change Section1 contents based on menuPage
-        (() => {
-        switch (menuPage) {
-          case "home":
-            return (
-              <div className='home-content flexbox'>
-                <h1>The Daily Commute</h1>
-                <Menu onMenuClick={handleMenuClick} />
-                <p>{props.quip}</p>
-              </div>
-            );
-
-          case "credits":
-            return (
-              <div className='section1-content flexbox'>
-                <h2>Credits</h2>
-                <div>
-                  <p>Here are the credits for the app.</p>
-                </div>
-              </div>
-            );
-
-          case "social":
-            return (
-              <div className='section1-content flexbox'>
-                <h2>Social</h2>
-                <p>Connect with us on social media!</p>
-              </div>
-            );
-
-          case "settings":
-            return (
-              <div className='section1-content flexbox'>
-                <h2>Settings</h2>
-                <p>Adjust your preferences here.</p>
-              </div>
-            );
-
-          default:
-            return null;
-        }
-      })()
+  const handleMenuClick = (id: string, toggleMenu?: boolean, lightMode?: boolean) => {
+    // If toggleMenu is true, toggle the menu visibility
+    if (toggleMenu && id !== "lightMode") {
+      setMenuState((prevMenuState) => !prevMenuState);
+    } else if (id !== "lightMode") {
+      // If a menu option is clicked (and it's not the lightMode), force the menu to open and update the menuPage
+      setMenuState(true);  // Open the menu when a menu option is clicked
+      if (["home", "credits", "social", "settings"].includes(id)) {
+        setMenuPage(id as MenuOption); // Set the current page to the clicked menu option
+      }
     }
+    
+    // Toggle light mode only (without affecting the menu state)
+    if (id === "lightMode") {
+      setLightMode((prevLightMode) => !prevLightMode); // Toggle light/dark mode
+    }
+  };
+
+  // Render Section1 content based on the current menuPage
+  const renderSection1Content = () => {
+    switch (menuPage) {
+      case "home":
+        return (
+          <div className='home-content flexbox'>
+            <h1>The Daily Commute</h1>
+            <Menu onMenuClick={handleMenuClick} menuState={menuState} lightMode={lightMode} menuPage={menuPage} />
+            <p>{props.quip}</p>
+          </div>
+        );
+      case "credits":
+        return (
+          <div className='section1-content flexbox'>
+            <h2>Credits</h2>
+            <p>Here are the credits for the app.</p>
+          </div>
+        );
+      case "social":
+        return (
+          <div className='section1-content flexbox'>
+            <h2>Social</h2>
+            <p>Connect with us on social media!</p>
+          </div>
+        );
+      case "settings":
+        return (
+          <div className='section1-content flexbox'>
+            <h2>Settings</h2>
+            <p>Adjust your preferences here.</p>
+          </div>
+        );
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <div className='section1 section flexbox'>
+      {/* Render top menu based on the menu state */}
+      {
+        (menuPage !== "home" || !menuState) && (
+          <Menu onMenuClick={handleMenuClick} menuState={menuState} lightMode={lightMode} menuPage={menuPage} />
+        )
+      }
+
+      {/* Render content based on the menu state */}
+      {
+        (menuState) && (
+          <div className='section1-content flexbox'>
+            {renderSection1Content()}
+          </div>
+        )
+      }
     </div>
-  )
+  );
 }
-  
-export default Section1
+
+export default Section1;

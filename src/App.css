@@ -1,115 +1,178 @@
 /* DEFAULT STYLES */
-.root {}
+*,
+*::before,
+*::after {
+  box-sizing: border-box; /* Ensure padding and borders are included in width/height calculations */
+}
 
-  h1, h2, h3 {
-    width: 100%;
-    text-align: center;
+html, body {
+  height: 100%; /* Ensure body and HTML take up 100% of the viewport height */
+  margin: 0; /* Remove default body margin */
+  padding: 0; /* Remove default body padding */
+  overflow: hidden; /* Prevent scrolling from body */
+}
 
-    margin: 1rem 0 1rem 0;
-  }
+h1, h2, h3 {
+  width: 100%;
+  text-align: center;
+  margin: 1rem 0;
+}
 
-  .app {
-    margin: 32px;
+.app {
+  margin: 0; /* Remove extra margin */
+  display: flex;
+  flex-wrap: wrap; /* Allow sections to wrap to the next line */
+  justify-content: space-evenly;
+  align-items: stretch;
+  gap: 16px;
+  height: 100vh; /* Ensure app takes full viewport height */
+}
 
-    flex-flow: row wrap;
-    justify-content: space-evenly;
-    align-items: stretch;
-  }
-
-  .flexbox {
-    display: flex;
-  }
+/* FLEXBOX */
+.flexbox {
+  display: flex;
+}
 
 /* SECTION STYLES */
 .section {
-  height: 100vh;
-  max-height: 100vh;
-
+  min-height: 100vh; /* Ensure each section takes at least 100vh */
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
+  width: 33%; /* Default for sections */
+  padding: 16px;
 }
-  /* SECTION 1 */
-  .section1 {
-    max-width: 25vw;
 
-    flex-flow: column wrap;
-    justify-content: space-between;
+/* SECTION 1 */
+.section1 {
+  max-width: 25vw;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  order: 1;
+  flex-grow: 1;
+  margin: 0; /* Remove extra margin */
+}
 
-    order: 1;
-    flex-grow: 1;
+.section1 .menu {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.section1-content {
+  height: auto; /* Allow content to adjust its height based on its content */
+  width: 100%;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: justify;
+  margin-bottom: 16px;
+}
+
+.home-content {
+  min-height: 80vh; /* Ensure this area takes up at least 80% of the view height */
+  width: 100%;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5vh;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.home-content p {
+  height: 2rem;
+}
+
+/* MENU */
+.menu {
+  height: 5vh;
+  width: 75%;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 16px;
+}
+
+.menu button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+/* SECTION 2 */
+.section2 {
+  max-width: 50vw;
+  order: 2;
+  flex-grow: 2;
+  margin: 0; /* Remove extra margin */
+}
+
+/* SECTION 3 */
+.section3 {
+  max-width: 25vw;
+  order: 3;
+  flex-grow: 1;
+  margin: 0; /* Remove extra margin */
+}
+
+/* MOBILE RESPONSIVENESS - STACK SECTIONS */
+@media (max-width: 768px) {
+  .app {
+    flex-direction: column;
+    gap: 16px;
+    margin: 0; /* Remove extra margin */
+    height: 100vh; /* Ensure app takes full height on mobile */
   }
 
-  .section1-content {
-    height: 95vh;
-    width: 100%;
-
-    flex-flow: column nowrap;
-    justify-content: flex-start;
-    align-items: flex-start;
-
-    text-align: justify;
+  .section {
+    width: 100%; /* Make sections full-width on smaller screens */
+    min-height: 100vh; /* Ensure sections are 100vh on smaller screens */
+    padding: 16px;
   }
 
-  .section1-content div {
-    overflow-y: scroll;
-
-    /* Hide scrollbar for section content */
-    -ms-overflow-style: none;  /* Internet Explorer 10+ */
-    scrollbar-width: none;  /* Firefox */
+  .section1, .section2, .section3 {
+    max-width: 100%;
+    order: initial; /* Reset order to default */
+    margin: 0; /* Remove extra margin */
   }
 
-  .section1-content div::-webkit-scrollbar {
-    /* Hide scrollbar for section content */
-    display: none;  /* Safari and Chrome */
+  .section1 .menu {
+    width: 100%; /* Ensure the menu is full width */
   }
 
   .home-content {
-    height: 80vh;
-    width: 100%;
+    min-height: 100vh; /* Ensure home content takes up full height */
+    margin-bottom: 16px; /* Margin below home content */
+  }
 
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
+  .menu {
+    width: 100%; /* Make menu full-width on smaller screens */
+    gap: 12px; /* Adjust gap between buttons */
+  }
 
-    gap: 2.5vh;
+  .menu button {
+    font-size: 1rem; /* Adjust button text size for mobile */
+  }
+}
 
-    text-align: center;
+/* ADDITIONAL RESPONSIVE STYLES FOR EVEN SMALLER SCREENS */
+@media (max-width: 480px) {
+  .section1, .section2, .section3 {
+    padding: 12px; /* Slightly smaller padding for very small screens */
+    margin: 0; /* Remove margin */
+  }
+
+  .menu {
+    height: auto; /* Allow menu to grow in height if necessary */
+    padding: 8px 0; /* Add some padding for small screens */
+  }
+
+  .home-content h1 {
+    font-size: 1.5rem; /* Adjust heading font size for small screens */
   }
 
   .home-content p {
-    height: 2rem;
+    font-size: 1rem; /* Adjust paragraph font size */
   }
-
-    /* MENU */
-    .menu {
-      height: 5vh;
-      width: 75%;
-
-      flex-flow: row nowrap;
-      justify-content: space-evenly;
-      align-items: center;
-    }
-
-      .menu button {
-        background-color: transparent;
-        border: none;
-        outline: none;
-        cursor: pointer;
-      }
-  
-  /* SECTION 2 */
-  .section2 {
-    max-width: 50vw;
-
-    order: 2;
-    flex-grow: 2;
-  }
-
-  /* SECTION 3 */
-  .section3 {
-    max-width: 25vw;
-
-    order: 3;
-    flex-grow: 1;
-  }
+}
