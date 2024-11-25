@@ -20,10 +20,11 @@ import {
 interface Props {
   onMenuClick: (id: string, toggleMenu?: boolean, lightMode?: boolean) => void;
   menuState: boolean;
-  lightMode: boolean; // Added lightMode prop to handle light/dark mode
-  menuPage: string;  // Add menuPage prop
+  lightMode: boolean;
+  menuPage: string;
 }
 
+// Menu component
 const Menu: FC<Props> = ({ onMenuClick, menuState, lightMode, menuPage }) => {
   const menuItems = [
     { id: "home", icon: menuPage === "home" ? <IoHome /> : <IoHomeOutline /> },
@@ -44,12 +45,13 @@ const Menu: FC<Props> = ({ onMenuClick, menuState, lightMode, menuPage }) => {
 
   return (
     <div className='menu flexbox'>
-      {menuItems.map((item) => (
+      {menuItems.map(({ id, icon, toggleMenu, lightMode }) => (
         <button
-          key={item.id}
-          onClick={() => onMenuClick(item.id, item.toggleMenu, item.lightMode)}
+          key={id}
+          onClick={() => onMenuClick(id, toggleMenu, lightMode)}
+          aria-label={id}
         >
-          {item.icon}
+          {icon}
         </button>
       ))}
     </div>

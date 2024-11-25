@@ -1,14 +1,31 @@
+/* Light Theme */
 :root {
-  height: 100%;
-  width: 100%;
+  --background-colour: #F5E6D3;
+  --text-colour: #4A3933;
+  --border-colour: #8C7A6B;
+  --accent-colour: #D2B48C;
+  --hightlight-colour: #A67B5B;
+}
 
-  padding: 0;
-  margin: 0;
-
-  background: #F2E7C9;
+/* Dark Theme */
+[data-theme="dark"] {
+  --background-colour: #1a1a1a;
+  --text-colour: #E6D5C4;
+  --border-colour: #2A2A2A;
+  --accent-colour: #8C7A6B;
+  --hightlight-colour: #D2B48C;
 }
 
 p, h1, h2, h3, h4, h5, h6, a {
   padding: 0;
   margin: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--text-colour) var(--background-colour);
 }
