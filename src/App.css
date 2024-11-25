@@ -1,4 +1,4 @@
-/* Global styles */
+/* GLOBAL Styles */
 .root {}
 
 h1, h2, h3 {
@@ -8,139 +8,164 @@ h1, h2, h3 {
 }
 
 .app {
+  margin: 32px;
+
   display: flex;
-  flex-wrap: wrap; /* Allow sections to wrap */
+  flex-flow: row nowrap;
   justify-content: space-evenly;
   align-items: stretch;
-  gap: 16px; /* Add spacing between sections */
-  margin: 32px;
+  gap: 16px;
 }
 
-/* Shared section styles */
+/* SECTION */
 .section {
+  height: auto;
+  max-height: 100vh;
+  width: 33%;
+  padding: 16px;
+
+  box-sizing: border-box;
+  text-align: justify;
+
   display: flex;
   flex-flow: column nowrap;
-  justify-content: flex-start; /* Align content to the top */
-  align-items: stretch; /* Let content fill section width */
-  height: 100vh; /* Full viewport height */
-  width: 33%; /* Default width for sections */
-  padding: 16px;
-  box-sizing: border-box; /* Include padding in dimensions */
+  justify-content: flex-start;
+  align-items: center;
 }
 
-/* Section-specific styles */
+.section-content {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  margin-bottom: 16px;
+}
+
+.scrollable{
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollable::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
+}
+
+/* SECTION 1 */
 .section1 {
   max-width: 25vw;
+
   order: 1;
   flex-grow: 1;
 }
 
-.section1 .menu {
+.menu {
+  width: 100%;
+  height: 5vh;
+  margin-bottom: 16px;
+
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   justify-content: space-evenly;
   align-items: center;
-  width: 100%; /* Full-width menu */
-  margin-bottom: 16px; /* Spacing below menu */
 }
 
-.section1-content {
-  width: 100%; /* Content fills section width */
+.menu button {
+  padding: 8px 16px;
+
+  background-color: transparent;
+  border: none;
+  outline: none;
+
+  cursor: pointer;
+}
+
+.home-content {
+  width: 100%;
   height: 95vh;
   margin-bottom: 16px;
-  text-align: justify;
-}
+  text-align: center;
 
-.section2 {
-  max-width: 50vw;
-  order: 2;
-  flex-grow: 2;
-}
-
-.section3 {
-  max-width: 25vw;
-  order: 3;
-  flex-grow: 1;
-}
-
-/* Home content styles */
-.home-content {
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 95vh;
-  text-align: center;
-  gap: 2.5vh;
-  margin-bottom: 16px;
 }
 
 .home-content p {
   height: 2rem;
 }
 
-/* Menu styles */
-.menu {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-evenly;
-  align-items: center;
-  height: 5vh;
-  width: 75%;
-  gap: 16px;
+/* SECTION 2 */
+.section2 {
+  height: 100vh;
+  max-width: 50vw;
+
+  order: 2;
+  flex-grow: 2;
 }
 
-.menu button {
-  background-color: transparent;
-  border: none;
-  outline: none;
-  cursor: pointer;
+/* SECTION 3 */
+.section3 {
+  max-width: 25vw;
+
+  order: 3;
+  flex-grow: 1;
 }
 
-/* Responsive styles */
-@media (max-width: 768px) {
+/* RESPONSIVENESS */
+@media (max-width: 1200px) {
   .app {
-    flex-direction: column; /* Stack sections vertically */
-    gap: 16px; /* Maintain spacing between sections */
-    margin: 16px; /* Adjust margin for smaller screens */
+    flex-flow: column nowrap;
   }
 
   .section {
-    width: 100%; /* Make sections full width */
-    max-width: 100%; /* Override width constraints */
-    margin: 8px 0; /* Add vertical spacing between sections */
+    min-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .app {
+    gap: 8px;
+    margin: 16px;
   }
 
-  .section1-content {
-    margin-bottom: 16px; /* Ensure spacing below content */
+  .section {
+    margin: 8px 0;
+  }
+
+  .section-content {
+    margin-bottom: 8px;
   }
 
   .menu {
-    width: 100%; /* Full-width menu */
-    gap: 12px; /* Adjust spacing between items */
+    margin-bottom: 8px;
   }
 
-  .menu button {
-    font-size: 1rem; /* Adjust font size */
+  .home-content p {
+    height: 1.5rem;
   }
 }
 
 @media (max-width: 480px) {
+  .app {
+    gap: 4px;
+    margin: 8px;
+  }
+
   .section {
-    padding: 12px; /* Reduce padding on smaller screens */
-    margin: 8px 0; /* Smaller spacing between sections */
+    margin: 4px 0;
+  }
+
+  .section-content {
+    margin-bottom: 4px;
   }
 
   .menu {
-    padding: 8px 0; /* Add padding for smaller menus */
-  }
-
-  .home-content h1 {
-    font-size: 1.5rem; /* Scale down headings */
+    margin-bottom: 4px;
   }
 
   .home-content p {
-    font-size: 1rem; /* Scale down text */
+    height: 1rem;
   }
 }

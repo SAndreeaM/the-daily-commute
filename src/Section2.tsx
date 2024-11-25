@@ -4,7 +4,10 @@ function Section2() {
 
     return (
       <div className='section2 section flexbox'>
-        Section2
+        <div className='section-content flexbox'>
+          <h2>Section 2</h2>
+          <p>This is the second section of the app.</p>
+        </div>
       </div>
     )
   }

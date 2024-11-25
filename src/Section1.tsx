@@ -35,7 +35,7 @@ function Section1(props: Props) {
     switch (menuPage) {
       case "home":
         return (
-          <div className='home-content flexbox'>
+          <div className='home-content section-content flexbox'>
             <h1>The Daily Commute</h1>
             <Menu onMenuClick={handleMenuClick} menuState={menuState} lightMode={lightMode} menuPage={menuPage} />
             <p>{props.quip}</p>
@@ -43,21 +43,21 @@ function Section1(props: Props) {
         );
       case "credits":
         return (
-          <div className='section1-content flexbox'>
+          <div>
             <h2>Credits</h2>
             <p>Here are the credits for the app.</p>
           </div>
         );
       case "social":
         return (
-          <div className='section1-content flexbox'>
+          <div>
             <h2>Social</h2>
             <p>Connect with us on social media!</p>
           </div>
         );
       case "settings":
         return (
-          <div className='section1-content flexbox'>
+          <div>
             <h2>Settings</h2>
             <p>Adjust your preferences here.</p>
           </div>
@@ -79,7 +79,7 @@ function Section1(props: Props) {
       {/* Render content based on the menu state */}
       {
         (menuState) && (
-          <div className='section1-content flexbox'>
+          <div className='section-content flexbox hide-scrollbar'>
             {renderSection1Content()}
           </div>
         )
