@@ -22,6 +22,31 @@ h1, h2, h3 {
   gap: 16px;
 }
 
+/* POPUP */
+.popup-content {
+  margin: auto;
+  background: var(--background-colour);
+  width: 50vw;
+  padding: 2rem;
+
+  border: solid 1px var(--text-colour);
+  color: var(--text-colour);
+}
+.popup-arrow {
+  color: rgb(255, 255, 255);
+}
+[role='tooltip'].popup-content {
+  width: 200px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
+}
+
+.popup-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+[data-popup='tooltip'].popup-overlay {
+  background: transparent;
+}
+
 /* SECTION */
 .section-container {
   width: 100%;
@@ -138,6 +163,9 @@ footer {
 
 /* RESPONSIVENESS */
 @media (max-width: 1200px) {
+  .popup-content {
+    width: 75vw;
+  }
   .section-container {
     flex-flow: column nowrap;
   }

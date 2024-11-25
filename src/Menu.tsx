@@ -17,19 +17,24 @@ import {
   HiCog6Tooth
 } from "react-icons/hi2";
 
+
 interface Props {
+
   onMenuClick: (id: string, toggleMenu?: boolean, lightMode?: boolean) => void;
   menuState: boolean;
   lightMode: boolean;
   menuPage: string;
+  socialPopup: boolean;
+
 }
 
+
 // Menu component
-const Menu: FC<Props> = ({ onMenuClick, menuState, lightMode, menuPage }) => {
+const Menu: FC<Props> = ({ onMenuClick, menuState, lightMode, menuPage, socialPopup }) => {
   const menuItems = [
     { id: "home", icon: menuPage === "home" ? <IoHome /> : <IoHomeOutline /> },
     { id: "credits", icon: menuPage === "credits" ? <IoHeart /> : <IoHeartOutline /> },
-    { id: "social", icon: menuPage === "social" ? <IoShareSocial /> : <IoShareSocialOutline /> },
+    { id: "social", icon: socialPopup ? <IoShareSocial /> : <IoShareSocialOutline /> },
     { id: "settings", icon: menuPage === "settings" ? <HiCog6Tooth /> : <HiOutlineCog6Tooth /> },
     {
       id: "lightMode",

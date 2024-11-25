@@ -16,11 +16,6 @@
   --hightlight-colour: #D2B48C;
 }
 
-p, h1, h2, h3, h4, h5, h6, a {
-  padding: 0;
-  margin: 0;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -28,4 +23,13 @@ p, h1, h2, h3, h4, h5, h6, a {
 
   scrollbar-width: thin;
   scrollbar-color: var(--text-colour) var(--background-colour);
+}
+
+p, h1, h2, h3, h4, h5, h6, a {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: var(--accent-colour);
 }

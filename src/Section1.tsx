@@ -1,6 +1,10 @@
 import { useState } from 'react';
+import Popup from 'reactjs-popup';
+
 import Menu from './Menu.tsx';
+
 import './App.css';
+//import 'reactjs-popup/dist/index.css';
 
 interface Props {
   quip: string;
@@ -12,19 +16,26 @@ function Section1(props: Props) {
   type MenuOption = "home" | "credits" | "social" | "settings"; // Define the menu options
   const [menuPage, setMenuPage] = useState<MenuOption>("home"); // Initialise the menuPage state
   const [menuState, setMenuState] = useState<boolean>(true); // Initialise the menuState state
+  const [socialPopup, setSocialPopup] = useState<boolean>(false); // Initialise the socialPopup state
 
   // Handle menu clicks
   const handleMenuClick = (id: string, toggleMenu?: boolean, lightMode?: boolean) => {
-    if (id === "lightMode") {
+    // Check if the id is "lightMode", "social" or a menu option
+    if(id === "lightMode") {
       props.onToggleLightMode(); // Call the toggle function from props
       return;
     }
 
-    if (toggleMenu && id !== "lightMode") {
+    if(id === "social") {
+      setSocialPopup(true); // Open the popup
+      return;
+    }
+
+    if(toggleMenu && id !== "lightMode") {
       setMenuState(prevMenuState => !prevMenuState);
-    } else if (id !== "lightMode") {
+    } else if(id !== "lightMode") {
       setMenuState(true);
-      if (["home", "credits", "social", "settings"].includes(id)) {
+      if (["home", "credits", "settings"].includes(id)) {
         setMenuPage(id as MenuOption);
       }
     }
@@ -42,10 +53,12 @@ function Section1(props: Props) {
               menuState={menuState}
               lightMode={props.lightMode}
               menuPage={menuPage}
+              socialPopup={socialPopup} // Pass socialPopup state
             />
             <p>{props.quip}</p>
           </div>
         );
+
       case "credits":
         return (
           <div>
@@ -53,13 +66,7 @@ function Section1(props: Props) {
             <p>Here are the credits for the app.</p>
           </div>
         );
-      case "social":
-        return (
-          <div>
-            <h2>Social</h2>
-            <p>Connect with us on social media!</p>
-          </div>
-        );
+
       case "settings":
         return (
           <div>
@@ -67,6 +74,7 @@ function Section1(props: Props) {
             <p>Adjust your preferences here.</p>
           </div>
         );
+
       default:
         return null;
     }
@@ -74,22 +82,31 @@ function Section1(props: Props) {
 
   return (
     <div className='section1 section flexbox'>
-      {/* {Render the menu if the menuPage is not "home" or the menuState is false} */}
+      {/* Render the menu if the menuPage is not "home" or the menuState is false */}
       {(menuPage !== "home" || !menuState) && (
         <Menu
           onMenuClick={handleMenuClick}
           menuState={menuState}
           lightMode={props.lightMode}
           menuPage={menuPage}
+          socialPopup={socialPopup} // Pass socialPopup state
         />
       )}
 
-      {/* {Render the content if the menuState is true} */}
+      {/* Render the content if the menuState is true */}
       {menuState && (
         <div className='section-content flexbox hide-scrollbar'>
           {renderSection1Content()}
         </div>
       )}
+
+      {/* Render the social popup */}
+      <Popup open={socialPopup} onClose={() => setSocialPopup(false)}>
+        <div>
+          <h2>Social</h2>
+          <p>Social media links and information.</p>
+        </div>
+      </Popup>
     </div>
   );
 }
