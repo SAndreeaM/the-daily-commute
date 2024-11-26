@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Popup from 'reactjs-popup';
 
 import Menu from './Menu.tsx';
+import SharePopup from './SharePopup.tsx';
 
 import './App.css';
 //import 'reactjs-popup/dist/index.css';
@@ -16,7 +17,7 @@ function Section1(props: Props) {
   type MenuOption = "home" | "credits" | "social" | "settings"; // Define the menu options
   const [menuPage, setMenuPage] = useState<MenuOption>("home"); // Initialise the menuPage state
   const [menuState, setMenuState] = useState<boolean>(true); // Initialise the menuState state
-  const [socialPopup, setSocialPopup] = useState<boolean>(false); // Initialise the socialPopup state
+  const [sharePopup, setSharePopup] = useState<boolean>(false); // Initialise the sharePopup state
 
   // Handle menu clicks
   const handleMenuClick = (id: string, toggleMenu?: boolean, lightMode?: boolean) => {
@@ -27,7 +28,7 @@ function Section1(props: Props) {
     }
 
     if(id === "social") {
-      setSocialPopup(true); // Open the popup
+      setSharePopup(true); // Open the popup
       return;
     }
 
@@ -53,7 +54,7 @@ function Section1(props: Props) {
               menuState={menuState}
               lightMode={props.lightMode}
               menuPage={menuPage}
-              socialPopup={socialPopup} // Pass socialPopup state
+              socialPopup={sharePopup} // Pass sharePopup state
             />
             <p>{props.quip}</p>
           </div>
@@ -89,7 +90,7 @@ function Section1(props: Props) {
           menuState={menuState}
           lightMode={props.lightMode}
           menuPage={menuPage}
-          socialPopup={socialPopup} // Pass socialPopup state
+          socialPopup={sharePopup} // Pass sharePopup state
         />
       )}
 
@@ -100,13 +101,8 @@ function Section1(props: Props) {
         </div>
       )}
 
-      {/* Render the social popup */}
-      <Popup open={socialPopup} onClose={() => setSocialPopup(false)}>
-        <div>
-          <h2>Social</h2>
-          <p>Social media links and information.</p>
-        </div>
-      </Popup>
+      {/* Render the share popup */}
+      <SharePopup open={sharePopup} onClose={() => setSharePopup(false)} />
     </div>
   );
 }
