@@ -46,7 +46,7 @@ function App() {
         const quipIndex = getRandomInt(0, quips.length - 1);
         return quips[quipIndex];
       });
-    }, 20000);
+    }, 200000);
 
     return () => clearInterval(quipInterval);
   }, []);

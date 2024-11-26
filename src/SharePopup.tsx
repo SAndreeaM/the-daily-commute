@@ -1,8 +1,10 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import Popup from 'reactjs-popup';
 
 import { 
-    IoCopyOutline,
+  IoCheckmarkSharp,
+  IoCopy,
+  IoCloseSharp
 } from "react-icons/io5";
 import {
   EmailShareButton,
@@ -53,11 +55,14 @@ interface Props {
 }
 
 const SharePopup: FC<Props> = ({ open, onClose }) => {
+  const [isCopied, setIsCopied] = useState(false); // Add state for copy status
   const websiteLink = "https://www.thedailycommute.com"; // Define the website link
 
   // Handle copying the website link
   const handleCopyLink = () => {
     navigator.clipboard.writeText(websiteLink);
+    setIsCopied(true); // Set copy status to true
+    setTimeout(() => setIsCopied(false), 2000); // Reset copy status after 2 seconds
   };
 
   // Define the share buttons
@@ -87,9 +92,11 @@ const SharePopup: FC<Props> = ({ open, onClose }) => {
   return (
     <Popup open={open} onClose={onClose}>
       <div className='share-popup-container'>
-        <div className='link-copy-container'>
-          <input type='text' value={websiteLink} readOnly />
-          <button onClick={handleCopyLink}><IoCopyOutline /></button>
+        <div className='header-container'>
+          <h2>Share this Website</h2>
+          <button className='close-button' onClick={onClose}>
+            <IoCloseSharp />
+          </button>
         </div>
         <div className='share-buttons-container'>
           {shareButtons.map(({ Button, Icon, media }, index) => (
@@ -97,6 +104,13 @@ const SharePopup: FC<Props> = ({ open, onClose }) => {
               <Icon size={48} round />
             </Button>
           ))}
+        </div>
+
+        <div className='link-copy-container'>
+          <input type='text' value={websiteLink} readOnly />
+          <button onClick={handleCopyLink}>
+            {isCopied ? <IoCheckmarkSharp /> : <IoCopy />} {/* Update icon based on copy status */}
+          </button>
         </div>
       </div>
     </Popup>

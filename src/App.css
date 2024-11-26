@@ -165,12 +165,12 @@ h1, h2, h3 {
   gap: 16px;
 }
 
-.share-buttons-container button svg {
+.share-buttons-container > button svg {
   height: 4rem;
   width: 4rem;
 }
 
-.link-copy-container button {
+.share-popup-container button {
   padding: 8px 16px;
 
   background-color: transparent;
@@ -197,6 +197,7 @@ h1, h2, h3 {
 }
 
 .share-popup-container {
+  position: relative; /* Add this line */
   height: 100%;
   width: 100%;
   overflow: hidden;
@@ -206,6 +207,26 @@ h1, h2, h3 {
   justify-content: space-evenly;
   gap: 2rem;
   align-items: center;
+}
+
+.close-button-container {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.close-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.close-button svg {
+  height: 1.5rem;
+  width: 1.5rem;
+  color: var(--text-colour);
 }
 
 /* SECTION 2 */
@@ -234,6 +255,11 @@ footer {
 
 /* RESPONSIVENESS */
 @media (max-width: 1200px) {
+  .share-buttons-container button svg {
+    height: 3rem;
+    width: 3rem;
+  }
+
   .popup-content {
     width: 75vw;
   }
@@ -254,6 +280,11 @@ footer {
 }
 
 @media (max-width: 768px) {
+  .share-buttons-container button svg {
+    height: 2rem;
+    width: 2rem;
+  }
+
   .app {
     gap: 8px;
     padding: 16px;
@@ -291,4 +322,11 @@ footer {
   footer {
     margin-bottom: 16px;
   }
+}
+
+.header-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
