@@ -49,6 +49,8 @@ import {
   WorkplaceIcon,
 } from 'react-share';
 
+import './Popup.css'; // Import the new Popup.css file
+
 interface Props {
   open: boolean;
   onClose: () => void;
@@ -92,7 +94,7 @@ const SharePopup: FC<Props> = ({ open, onClose }) => {
   return (
     <Popup open={open} onClose={onClose}>
       <div className='share-popup-container'>
-        <div className='header-container'>
+        <div className='share-popup-header-container'>
           <h2>Share this Website</h2>
           <button className='close-button' onClick={onClose}>
             <IoCloseSharp />

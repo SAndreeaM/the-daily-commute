@@ -5,6 +5,8 @@ import Menu from './Menu.tsx';
 import SharePopup from './SharePopup.tsx';
 
 import './App.css';
+import './Section.css';
+import './Popup.css'; // Import the new Popup.css file
 //import 'reactjs-popup/dist/index.css';
 
 interface Props {

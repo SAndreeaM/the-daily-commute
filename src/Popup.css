@@ -1,0 +1,125 @@
+/* POPUP DEFAULT Styles*/
+.popup-content {
+    margin: auto;
+    background: var(--background-colour);
+    padding: 2rem;
+    border: solid 1px var(--text-colour);
+    border-radius: 1rem;
+    color: var(--text-colour);
+}
+  
+.popup-arrow {
+    color: rgb(255, 255, 255);
+}
+  
+[role='tooltip'].popup-content {
+    width: 200px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
+}
+  
+.popup-overlay {
+    background: rgba(0, 0, 0, 0.5);
+}
+  
+[data-popup='tooltip'].popup-overlay {
+    background: transparent;
+}
+
+/* POPUP */
+.popup-content {
+    width: 50%;
+}
+
+/* SHARE POPUP CONTAINER */
+.share-popup-container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    gap: 2rem;
+    align-items: center;
+}
+
+.share-popup-container button {
+    padding: 8px 16px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+/* HEADER */
+.share-popup-header-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* CLOSE BUTTON */
+.close-button-container {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+  
+.close-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+    
+.close-button svg {
+    height: 1.5rem;
+    width: 1.5rem;
+    color: var(--text-colour);
+}
+
+/* SHARE BUTTONS */
+.share-buttons-container {
+    width: 100%;
+    overflow-x: scroll;
+    padding: 1rem;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 16px;
+}
+
+.share-buttons-container > button svg {
+    height: 4rem;
+    width: 4rem;
+}
+
+.link-copy-container {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+  
+.link-copy-container input {
+    width: 75%;
+    padding: 8px 16px;
+    margin-right: 8px;
+    font-size: large;
+    font-weight: semi-bold;
+    background-color: var(--background-colour);
+    color: var(--text-colour);
+    border: solid 1px var(--text-colour);
+    border-radius: 4px;
+    outline: none;
+}
+
+.link-copy-container > button svg {
+    height: 1rem;
+    width: 1rem;
+    color: var(--text-colour);
+}
