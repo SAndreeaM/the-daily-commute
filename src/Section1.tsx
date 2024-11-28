@@ -1,12 +1,21 @@
 import { useState } from 'react';
 import Popup from 'reactjs-popup';
 
+import { 
+  FaLinkedinIn,
+  FaGithub,
+  FaTwitch,
+  FaTwitter,
+  FaYoutube,
+  FaTiktok,
+ } from "react-icons/fa6";
+
 import Menu from './Menu.tsx';
 import SharePopup from './SharePopup.tsx';
 
 import './App.css';
 import './Section.css';
-import './Popup.css'; // Import the new Popup.css file
+import './Popup.css';
 //import 'reactjs-popup/dist/index.css';
 
 interface Props {
@@ -64,9 +73,25 @@ function Section1(props: Props) {
 
       case "credits":
         return (
-          <div>
+          <div className='credits-content section-content flexbox'>
             <h2>Credits</h2>
-            <p>Here are the credits for the app.</p>
+            <p>Created by Andreea "PuffyBean" Săndulache</p>
+            <p>
+              <a href="https://www.linkedin.com/in/andreea-maria-sandulache-312927207/" target="_blank"><FaLinkedinIn /></a> | 
+              <a href="https://github.com/SAndreeaM" target="_blank"><FaGithub /></a>
+            </p>
+            <p>from</p>
+            <h3>BlackCatJoystick Studios</h3>
+            <p>
+              <a href="https://www.twitch.tv/blackcatjoystickstudios" target="_blank"><FaTwitch /></a> | 
+              <a href="https://www.youtube.com/@BlackCatJoystickStudios" target="_blank"><FaYoutube /></a> | 
+              <a href="https://www.tiktok.com/@blackcatjoystick?lang=en" target="_blank"><FaTiktok /></a> | 
+              <a href="https://x.com/BCJ_dev" target="_blank"><FaTwitter /></a>
+            </p>
+            <h3>Technologies Used</h3>
+            <p>React, TypeScript, CSS, HTML</p>
+            <h3>Other Credits</h3>
+            <p>Inspired by <a href="https://imissmybar.com/lander" target="_blank">I Miss My Bar</a> and <a href="https://imissmycafe.com/" target="_blank">I Miss My Cafe</a>.</p>
           </div>
         );
 

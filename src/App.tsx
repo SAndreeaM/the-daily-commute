@@ -40,7 +40,7 @@ function App() {
   }, [lightMode]);
 
   useEffect(() => {
-    // Change quip every 20 seconds
+    // Change quip every 20 minutes
     const quipInterval = setInterval(() => {
       setQuip(prevQuip => {
         const quipIndex = getRandomInt(0, quips.length - 1);
