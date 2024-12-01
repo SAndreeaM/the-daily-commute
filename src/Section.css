@@ -62,6 +62,17 @@
   justify-content: center;
 }
 
+.credits-icon-container {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+
+  gap: 16px;
+  margin: 8px;
+}
+
 /* CLOSE BUTTON */
 .close-button-container {
   width: 100%;

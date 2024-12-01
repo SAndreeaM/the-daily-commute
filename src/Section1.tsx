@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Popup from 'reactjs-popup';
 
 import { 
@@ -19,7 +19,6 @@ import './Popup.css';
 //import 'reactjs-popup/dist/index.css';
 
 interface Props {
-  quip: string;
   lightMode: boolean;
   onToggleLightMode: () => void;
 }
@@ -29,6 +28,38 @@ function Section1(props: Props) {
   const [menuPage, setMenuPage] = useState<MenuOption>("home"); // Initialise the menuPage state
   const [menuState, setMenuState] = useState<boolean>(true); // Initialise the menuState state
   const [sharePopup, setSharePopup] = useState<boolean>(false); // Initialise the sharePopup state
+
+  const quips: string[] = [
+    "Mind the gap between procrastination and productivity.",
+    "Next stop: Accomplishment Station.",
+    "Please stand clear of the closing deadlines.",
+    "This train of thought is now departing.",
+    "Productivity levels are now approaching maximum capacity.",
+    "Missing your stop? Don't worry—another train's on the way.",
+    "Every small step gets you closer to your destination.",
+    "The journey is just as important as the destination.",
+    "There's no wrong way to get where you're going.",
+    "Take it one stop at a time—no need to rush.",
+    "Even slow trains get to the station eventually.",
+    "Need a break? Pull the cord and pause.",
+    "Sometimes the best detours lead to better tracks.",
+    "Don't forget to enjoy the view along the way.",
+    "Missed your train of thought? Another one's coming soon.",
+    "Each stop gets you closer to where you want to be.",
+    "This is your ride—travel at your own speed."
+  ];
+
+  const getRandomInt = (a: number, b: number) => Math.floor(a + Math.random() * (b + 1)); // Function to get a random integer
+  const [quip, setQuip] = useState<string>(quips[getRandomInt(0, quips.length - 1)]); // Initialise the quip state
+
+  // Set a new quip every 10 minutes
+  useEffect(() => {
+    const quipInterval = setInterval(() => {
+      setQuip(quips[getRandomInt(0, quips.length - 1)]);
+    }, 100000);
+
+    return () => clearInterval(quipInterval);
+  }, []);
 
   // Handle menu clicks
   const handleMenuClick = (id: string, toggleMenu?: boolean, lightMode?: boolean) => {
@@ -67,7 +98,7 @@ function Section1(props: Props) {
               menuPage={menuPage}
               socialPopup={sharePopup} // Pass sharePopup state
             />
-            <p>{props.quip}</p>
+            <p>{quip}</p>
           </div>
         );
 
@@ -76,18 +107,18 @@ function Section1(props: Props) {
           <div className='credits-content section-content flexbox'>
             <h2>Credits</h2>
             <p>Created by Andreea "PuffyBean" Săndulache</p>
-            <p>
-              <a href="https://www.linkedin.com/in/andreea-maria-sandulache-312927207/" target="_blank"><FaLinkedinIn /></a> | 
+            <div className='credits-icon-container'>
+              <a href="https://www.linkedin.com/in/andreea-maria-sandulache-312927207/" target="_blank"><FaLinkedinIn /></a>
               <a href="https://github.com/SAndreeaM" target="_blank"><FaGithub /></a>
-            </p>
+            </div>
             <p>from</p>
             <h3>BlackCatJoystick Studios</h3>
-            <p>
-              <a href="https://www.twitch.tv/blackcatjoystickstudios" target="_blank"><FaTwitch /></a> | 
-              <a href="https://www.youtube.com/@BlackCatJoystickStudios" target="_blank"><FaYoutube /></a> | 
-              <a href="https://www.tiktok.com/@blackcatjoystick?lang=en" target="_blank"><FaTiktok /></a> | 
+            <div className='credits-icon-container'>
+              <a href="https://www.twitch.tv/blackcatjoystickstudios" target="_blank"><FaTwitch /></a>
+              <a href="https://www.youtube.com/@BlackCatJoystickStudios" target="_blank"><FaYoutube /></a>
+              <a href="https://www.tiktok.com/@blackcatjoystick?lang=en" target="_blank"><FaTiktok /></a>
               <a href="https://x.com/BCJ_dev" target="_blank"><FaTwitter /></a>
-            </p>
+            </div>
             <h3>Technologies Used</h3>
             <p>React, TypeScript, CSS, HTML</p>
             <h3>Other Credits</h3>

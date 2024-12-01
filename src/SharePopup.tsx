@@ -58,13 +58,18 @@ interface Props {
 
 const SharePopup: FC<Props> = ({ open, onClose }) => {
   const [isCopied, setIsCopied] = useState(false); // Add state for copy status
+  const [showCopyPopup, setShowCopyPopup] = useState(false); // Add state for showing the copy popup
   const websiteLink = "https://www.thedailycommute.com"; // Define the website link
 
   // Handle copying the website link
   const handleCopyLink = () => {
     navigator.clipboard.writeText(websiteLink);
-    setIsCopied(true); // Set copy status to true
-    setTimeout(() => setIsCopied(false), 2000); // Reset copy status after 2 seconds
+    setIsCopied(true);
+    setShowCopyPopup(true);
+    setTimeout(() => {
+      setIsCopied(false);
+      setShowCopyPopup(false);
+    }, 2000);
   };
 
   // Define the share buttons
@@ -111,9 +116,14 @@ const SharePopup: FC<Props> = ({ open, onClose }) => {
         <div className='link-copy-container'>
           <input type='text' value={websiteLink} readOnly />
           <button onClick={handleCopyLink}>
-            {isCopied ? <IoCheckmarkSharp /> : <IoCopy />} {/* Update icon based on copy status */}
+            {isCopied ? <IoCheckmarkSharp /> : <IoCopy />}
           </button>
         </div>
+        {showCopyPopup && (
+          <div className='copy-popup'>
+            Link has been copied to clipboard.
+          </div>
+        )}
       </div>
     </Popup>
   );
