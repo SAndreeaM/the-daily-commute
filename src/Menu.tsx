@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import './App.css';
-import { 
+import {
   IoShareSocialOutline,
   IoShareSocial,
   IoHeartOutline,
@@ -12,54 +12,33 @@ import {
   IoClose,
   IoChevronDown
 } from "react-icons/io5";
-import { 
-  HiOutlineCog6Tooth,
-  HiCog6Tooth
-} from "react-icons/hi2";
-
+import { HiOutlineCog6Tooth, HiCog6Tooth } from "react-icons/hi2";
+import Navigation from './Navigation';
 
 interface Props {
-
   onMenuClick: (id: string, toggleMenu?: boolean, lightMode?: boolean) => void;
   menuState: boolean;
   lightMode: boolean;
   menuPage: string;
   socialPopup: boolean;
-
 }
 
-
-// Menu component
 const Menu: FC<Props> = ({ onMenuClick, menuState, lightMode, menuPage, socialPopup }) => {
   const menuItems = [
     { id: "home", icon: menuPage === "home" ? <IoHome /> : <IoHomeOutline /> },
     { id: "credits", icon: menuPage === "credits" ? <IoHeart /> : <IoHeartOutline /> },
     { id: "social", icon: socialPopup ? <IoShareSocial /> : <IoShareSocialOutline /> },
     { id: "settings", icon: menuPage === "settings" ? <HiCog6Tooth /> : <HiOutlineCog6Tooth /> },
-    {
-      id: "lightMode",
-      lightMode: true,
-      icon: lightMode ? <IoMoonOutline /> : <IoSunnyOutline />
-    },
-    {
-      id: "menuState",
-      toggleMenu: true,
-      icon: menuState ? <IoClose /> : <IoChevronDown />
-    }
+    { id: "lightMode", icon: lightMode ? <IoMoonOutline /> : <IoSunnyOutline /> },
+    { id: "menuState", icon: menuState ? <IoClose /> : <IoChevronDown /> }
   ];
 
   return (
-    <div className='menu flexbox'>
-      {menuItems.map(({ id, icon, toggleMenu, lightMode }) => (
-        <button
-          key={id}
-          onClick={() => onMenuClick(id, toggleMenu, lightMode)}
-          aria-label={id}
-        >
-          {icon}
-        </button>
-      ))}
-    </div>
+    <Navigation
+      items={menuItems}
+      currentState={menuPage}
+      setCurrentState={(state) => onMenuClick(state)}
+    />
   );
 };
 

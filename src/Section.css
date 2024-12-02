@@ -28,6 +28,56 @@
   margin-bottom: 16px;
 }
 
+.small-circle {
+  width: 12px;
+  height: 12px;
+  margin-top: 4px;
+}
+
+.tabs-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.tabs {
+  display: flex;
+  align-items: center;
+}
+
+.tab-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tab-content {
+  width: 100%;
+  height: auto;
+  margin-top: 16px;
+}
+
+.navigation-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 16px;
+}
+
+.navigation-items {
+  display: flex;
+  align-items: center;
+}
+
+.navigation-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 /* SECTION 1 */
 .section1 {
   max-width: 25vw;

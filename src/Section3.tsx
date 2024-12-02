@@ -1,25 +1,35 @@
-import { useState, useEffect } from 'react';
-
-import './App.css'
-import './Section.css'
-import { IoMusicalNotes } from 'react-icons/io5';
+import { useState } from 'react';
+import './App.css';
+import './Section.css';
+import Tabs from './Tabs.tsx';
 
 function Section3() {
   type TabsOption = "ambient" | "pomodoro" | "tasks";
   const [tabsState, setTabsState] = useState<TabsOption>("ambient");
 
-  const tabsItems = [
-    {id: "ambientSounds", icon: <IoMusicalNotes />},
-  ];
+  const renderTabContent = () => {
+    switch (tabsState) {
+      case "ambient":
+        return <div>Ambient Content</div>;
+      case "pomodoro":
+        return <div>Pomodoro Content</div>;
+      case "tasks":
+        return <div>Tasks Content</div>;
+      default:
+        return null;
+    }
+  };
 
-    return (
-      <div className='section3 section flexbox'>
-        <div className='section-content flexbox'>
-          <h2>Section 3</h2>
-          <p>This is the third section of the app.</p>
+  return (
+    <div className='section3 section flexbox'>
+      <div className='section-content flexbox'>
+        <Tabs tabsState={tabsState} setTabsState={setTabsState} />
+        <div className='tab-content'>
+          {renderTabContent()}
         </div>
       </div>
-    )
-  }
-  
-  export default Section3
+    </div>
+  );
+}
+
+export default Section3;
