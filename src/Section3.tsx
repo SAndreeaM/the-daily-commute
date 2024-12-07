@@ -10,7 +10,11 @@ function Section3() {
   const renderTabContent = () => {
     switch (tabsState) {
       case "ambient":
-        return <div>Ambient Content</div>;
+        return (
+          <div className='ambient-content'>
+            
+          </div>
+        );
       case "pomodoro":
         return <div>Pomodoro Content</div>;
       case "tasks":
@@ -22,12 +26,10 @@ function Section3() {
 
   return (
     <div className='section3 section flexbox'>
-      <div className='section-content flexbox'>
         <Tabs tabsState={tabsState} setTabsState={setTabsState} />
-        <div className='tab-content'>
+        <div className='section-content flexbox'>
           {renderTabContent()}
         </div>
-      </div>
     </div>
   );
 }

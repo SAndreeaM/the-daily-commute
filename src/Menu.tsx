@@ -37,7 +37,13 @@ const Menu: FC<Props> = ({ onMenuClick, menuState, lightMode, menuPage, socialPo
     <Navigation
       items={menuItems}
       currentState={menuPage}
-      setCurrentState={(state) => onMenuClick(state)}
+      setCurrentState={(state) => {
+        if (state === "menuState") {
+          onMenuClick(state, true);
+        } else {
+          onMenuClick(state);
+        }
+      }}
     />
   );
 };
